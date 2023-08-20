@@ -1,6 +1,7 @@
 export type TypeRef =
     | { kind: 'primitive'; name: string }
     | { kind: 'array'; type: TypeRef }
+    | { kind: 'function'; paramTypes: TypeRef[]; returnType: TypeRef }
     | { kind: 'generic'; name: string; typeParams: TypeRef[] }
     | { kind: 'object'; fields: { name: string; type: TypeRef }[] }
     | { kind: 'literal'; value: any }

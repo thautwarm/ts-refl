@@ -5,6 +5,10 @@ export type TypeRef = {
     kind: 'array';
     type: TypeRef;
 } | {
+    kind: 'function';
+    paramTypes: TypeRef[];
+    returnType: TypeRef;
+} | {
     kind: 'generic';
     name: string;
     typeParams: TypeRef[];

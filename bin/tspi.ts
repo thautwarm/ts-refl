@@ -18,6 +18,19 @@ function propNameToString(propName: ts.PropertyName | ts.EntityName): string {
 }
 
 function visitType(node: ts.TypeNode): TypeRef {
+    if (ts.isFunctionTypeNode(node)) {
+        const paramTypes = node.parameters.map((param) => {
+            if (!param.type)
+                return anyType();
+            return visitType(param.type);
+        })
+        const returnType = node.type ? visitType(node.type) : anyType();
+        return {
+            kind: 'function',
+            paramTypes,
+            returnType
+        };
+    }
     if (ts.isTypeLiteralNode(node)) {
         const fields = node.members.map((member) => {
             if (!ts.isPropertySignature(member)) {
