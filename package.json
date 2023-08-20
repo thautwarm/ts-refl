@@ -1,0 +1,23 @@
+{
+  "name": "ts-refl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "prepublishOnly": "tsc",
+    "dist": "tsc && pkg ./bin/tspi.js --out-path dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.5.1",
+    "pkg": "^5.8.1"
+  },
+  "dependencies": {
+    "cmd-ts": "^0.13.0",
+    "typescript": "^5.1.6"
+  }
+}

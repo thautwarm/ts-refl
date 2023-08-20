@@ -1,0 +1,47 @@
+[
+  {
+    "name": "S",
+    "typeParams": [],
+    "fields": [
+      {
+        "name": "a",
+        "type": {
+          "kind": "union",
+          "types": [
+            {
+              "kind": "primitive",
+              "name": "string"
+            },
+            {
+              "kind": "literal",
+              "value": "ax"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "S",
+    "typeParams": [],
+    "fields": [
+      {
+        "name": "x",
+        "type": {
+          "kind": "union",
+          "types": [
+            {
+              "kind": "primitive",
+              "name": "string"
+            },
+            {
+              "kind": "generic",
+              "name": "S",
+              "typeParams": []
+            }
+          ]
+        }
+      }
+    ]
+  }
+]
