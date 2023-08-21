@@ -31,5 +31,6 @@ export interface TypeDef {
     fields: {
         name: string;
         type: TypeRef;
+        nullable: boolean;
     }[];
 }

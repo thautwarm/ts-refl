@@ -49,11 +49,18 @@ function visitType(node: ts.TypeNode): TypeRef {
 
     if (ts.isTypeReferenceNode(node)) {
 
-        return {
+        let pre: TypeRef = {
             kind: 'generic',
             name: propNameToString(node.typeName),
             typeParams: node.typeArguments ? node.typeArguments.map(visitType) : []
         };
+        if (pre.typeParams.length == 0) {
+            return {
+                kind: 'primitive',
+                name: pre.name
+            }
+        }
+        return pre;
     }
 
     if (ts.isArrayTypeNode(node)) {
@@ -156,7 +163,8 @@ function visitDef(node: ts.InterfaceDeclaration): TypeDef {
         }
         const name = propNameToString(member.name);
         const type = member.type ? visitType(member.type) : anyType();
-        return { name, type };
+        const nullable = member.questionToken !== undefined;
+        return { name, type, nullable };
     })
 
     return {

@@ -10,5 +10,5 @@ export type TypeRef =
 export interface TypeDef {
     name: string;
     typeParams: string[];
-    fields: { name: string; type: TypeRef }[];
+    fields: { name: string; type: TypeRef; nullable: boolean }[];
 }
